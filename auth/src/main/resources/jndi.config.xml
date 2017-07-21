@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndiConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="/jndi.config.xsd">
+    <resource>
+        <name>jdbc/auth-ds</name>
+        <type>com.zaxxer.hikari.HikariDataSource</type>
+        <property>
+            <name>driverClassName</name>
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property>
+            <name>jdbcUrl</name>
+            <value>jdbc:oracle:thin:@localhost:1521/pdborcl</value>
+        </property>
+        <property>
+            <name>username</name>
+            <value>sa</value>
+        </property>
+        <property>
+            <name>password</name>
+            <value>sa</value>
+        </property>
+        <property>
+            <name>factory</name>
+            <value>org.apache.naming.factory.BeanFactory</value>
+        </property>
+    </resource>
+</jndiConfig>
+
+

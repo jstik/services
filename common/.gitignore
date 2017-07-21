@@ -1,0 +1,6 @@
+target
+.idea
+/src/main/webapp/web/node_modules
+/*.iml
+npm-debug.log
+.settings

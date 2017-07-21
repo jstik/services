@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<p> <h1>Please Confirm Registration.</h1> </p>
+<p> <h2>Thank you for using our application!</h2> </p>
+<div> <h2>To complete registration please use this <a th:href="@{${serverUrl} +'/registration/submit/'+${username}+'/?key='+ ${key}}">link </a> </h2> </div>
+</body>
+</html>

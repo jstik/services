@@ -1,0 +1,31 @@
+<div>
+
+    <div class="login-box">
+        <form name="login_form" (ngSubmit) = login() #f="ngForm" action="#" method="POST">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Sign in</b> <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span></div>
+                <div class="panel-body">
+                    <div class="form-group has-primary has-feedback">
+                        <label class="control-label" for="login">Login <span class="regForm text-danger">*</span></label>
+                        <input type="text" class="form-control" name="login" id="login" aria-describedby="login" [(ngModel)] ="model.username" #username="ngModel" required>
+                        <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+                        <div *ngIf="f.submitted && !username.valid " class="text-danger"> Login is required  </div>
+                    </div>
+                    <div class="form-group has-primary has-feedback">
+                        <label class="control-label" for="password">Password <span class="regForm text-danger">*</span></label>
+                        <input type="password" class="form-control" name="password" id="password" aria-describedby="password" [(ngModel)] ="model.password" #password ="ngModel" required>
+                        <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
+                        <div *ngIf="f.submitted && !password.valid " class="text-danger"> Password is required </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-success" id="goToChat" value="Sign in" />
+                    <a routerLink = "/registration" routerLinkActive="active" class="btn btn-warning pull-right">Registration</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-link" routerLink = "/recoveryPassword">Forgot password? </a>
+    </div>
+</div>

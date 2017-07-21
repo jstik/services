@@ -1,0 +1,150 @@
+<form class="form-horizontal" (submit)="submit()" [formGroup] ="regForm"   name="registrationForm"  action='javascript:' method="POST">
+    <fieldset>
+        <div class="container">
+            <div class="row justify-content-start ">
+                <div class="col-sm-6">
+                    <div class="controls"  >
+                        <extended-input [formGroup] ="loginForm"  [isError]="loginForm.controls.login.errors && loginForm.controls.login.touched" [labelText]="'Login'">
+                            <input formControlName="login" [(ngModel)]="user.username" type="text" id="login"
+                                   name="login" placeholder="" class="form-control" required >
+                            <error-message *ngIf="loginForm.controls.login.errors?.required && loginForm.controls.login.touched">
+                                Login is required.
+                            </error-message>
+                            <error-message *ngIf="loginForm.controls.login.errors?.ContainsWhitespaces && loginForm.controls.login.touched">
+                                Mustn't contain whitespaces.
+                            </error-message>
+                            <error-message *ngIf="loginForm.controls.login.errors?.minlength && loginForm.controls.login.touched">
+                               Username needs to be at least 4 characters.
+                            </error-message>
+                            <error-message *ngIf="loginForm.controls.login.errors?.usernameTaken">
+                                This username taken. Please use another one.
+                            </error-message>
+                        </extended-input>
+                    </div>
+                </div>
+                <div class="col-sm-6" >
+                    <extended-input [formGroup] ="companyName" [labelText]="'Company Name'"
+                                    [isError]="companyName.controls.companyName.errors && companyName.controls.companyName.touched ">
+                        <input  formControlName="companyName" [(ngModel)]="tenant.name" type="text" id="company_name" name="company_name"
+                                placeholder="" class="form-control" >
+                        <error-message *ngIf="companyName.controls.companyName.errors?.required && companyName.controls.companyName.touched">
+                            Company Name is required
+                        </error-message>
+                    </extended-input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"  >
+                    <extended-input [formGroup] ="emailGroup"  [labelText]="'Email'"
+                                    [isError]="emailGroup.controls.emailControl.errors && emailGroup.controls.emailControl.touched">
+                        <input [(ngModel)]="user.email" type="email" formControlName="emailControl"
+                               id="emailControl" name="emailControl"
+                               placeholder="valid@email.com " class="form-control">
+                        <error-message *ngIf="emailGroup.controls.emailControl.errors?.required  && emailGroup.controls.emailControl.touched">
+                            Email is required </error-message>
+                        <error-message *ngIf="emailGroup.controls.emailControl.errors?.ValidateEmail  && emailGroup.controls.emailControl.touched">
+                            Must be a valid email </error-message>
+                    </extended-input>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="address">Company Address</label>
+                    <input [(ngModel)]="tenant.address" type="text" id="address" [ngModelOptions]="{standalone: true}"
+                           name="address" placeholder="" class="form-control">
+                </div>
+            </div>
+            <!--  <div class="row phone_number">
+                  <div class="col-sm-6">
+                      <label for="county_code">User Phone<span class="regForm text-danger">*</span> </label>
+                      <div class="row">
+                          <div class="col-code col-xs-2 col-sm-2">
+                              <input type="text" maxlength="2" id="county_code" name="county_code" placeholder="+7"
+                                     class="form-control" #contryCode  required/>
+                          </div>
+                          <div class="col-number col-xs-10 col-sm-10">
+                              <input type="text" id="user_phone" name="user_phone" placeholder=""
+                                     class="form-control" #phone  required/>
+                          </div>
+                          <input type="hidden" [(value)]='contryCode.value + phone.value' #spy/>
+                          <div>sdsfsdf{{contryCode.value + phone.value}}</div>
+
+                      </div>
+
+                  </div>
+                  <div class="col-sm-6">
+                      <label for="company_phone">Company Phone</label>
+                      <div class="row">
+                          <div class="col-code col-xs-2 col-sm-2">
+                              <input type="text" maxlength="2" id="company_county_code" name="company_county_code" placeholder="+7"
+                                     class="form-control" required>
+                          </div>
+                          <div class="col-number col-xs-10 col-sm-10">
+                              <input type="text" id="company_phone" name="company_phone" placeholder=""
+                                     class="form-control" required>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>-->
+          <!--  <div class="row justify-content-start ">
+                <div class="col-sm-6"  >
+                    <password-group #passwordGroup></password-group>
+                </div>
+                <div class="col-sm-6">
+                    <label for="comment">Description:</label>
+                    <textarea [(ngModel)]="tenant.description" [ngModelOptions]="{standalone: true}" class="form-control" rows="4" id="comment"></textarea>
+                </div>
+            </div>-->
+
+            <div class="row justify-content-start ">
+                <div class="col-sm-6">
+                    <extended-input [formGroup] ="firstNameGroup"  [labelText]="'First Name'"
+                                    [isError]="firstNameGroup.controls.firstNameGroup.errors && firstNameGroup.controls.firstNameGroup.touched">
+                        <input formControlName="firstNameGroup" [(ngModel)]="user.firstname" type="text" id="first_name" name="first_name"
+                               placeholder="" class="form-control"  required>
+                        <error-message *ngIf="firstNameGroup.controls.firstNameGroup.errors && firstNameGroup.controls.firstNameGroup.touched">
+                            First Name is required
+                        </error-message>
+                    </extended-input>
+
+                    <extended-input [labelText]="'Last Name'" [formGroup] ="lastNameGroup"
+                                    [isError]="lastNameGroup.controls.lastNameGroup.errors && lastNameGroup.controls.lastNameGroup.touched">
+                        <input formControlName="lastNameGroup" [(ngModel)]="user.lastname" type="text" id="last_name" name="last_name"
+                               placeholder="" class="form-control">
+                        <error-message *ngIf="lastNameGroup.controls.lastNameGroup.errors?.required && lastNameGroup.controls.lastNameGroup.touched">
+                            Last Name is required
+                        </error-message>
+                    </extended-input>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="comment">Description:</label>
+                    <textarea [(ngModel)]="tenant.description" [ngModelOptions]="{standalone: true}" class="form-control" rows="4" id="comment"></textarea>
+                </div>
+            </div>
+           <!-- <div class="row justify-content-start ">
+                <div class="col-sm-6">
+                    <extended-input [labelText]="'Last Name'" [formGroup] ="lastNameGroup"
+                                    [isError]="lastNameGroup.controls.lastNameGroup.errors && lastNameGroup.controls.lastNameGroup.touched">
+                        <input formControlName="lastNameGroup" [(ngModel)]="user.lastname" type="text" id="last_name" name="last_name"
+                               placeholder="" class="form-control">
+                        <error-message *ngIf="lastNameGroup.controls.lastNameGroup.errors?.required && lastNameGroup.controls.lastNameGroup.touched">
+                            Last Name is required
+                        </error-message>
+                    </extended-input>
+                </div>
+            </div>-->
+
+            <!-- Button -->
+            <div class="controls btn-area">
+                <button [ngClass]="{
+                            'btn': true, 'btn-success': isValid() || !isTouched(),
+                            'btn-default': !isValid() && isTouched()}">
+                    Register</button>
+                <a class="btn btn-link" routerLink = "/login">Login Page  </a>
+            </div>
+
+        </div>
+
+    </fieldset>
+</form>
